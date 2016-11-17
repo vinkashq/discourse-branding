@@ -3,11 +3,13 @@
 
   $(window).scroll(function(){
     var fromTop = $(window).scrollTop();
-    var margin = 48 - fromTop;
-    if(margin < 0) {
-       margin = 0;
+    var marginTop = 0;
+    if(fromTop < 48) {
+       marginTop = 48 - fromTop;
+    } else {
+       marginTop = 0;
     }
-    $("header.d-header").css('margin-top', margin + 'px');
+    $(".docked header.d-header").css('margin-top', marginTop + 'px');
   });
 
 })(jQuery);
