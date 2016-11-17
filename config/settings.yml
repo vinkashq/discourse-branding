@@ -1,4 +1,4 @@
-plugins:
+branding:
   brand_name:
     default: 'Discourse'
     client: true
