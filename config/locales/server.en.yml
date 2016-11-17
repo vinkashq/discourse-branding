@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    brand_name: "The name of your brand, as used in the title tag."
+    brand_logo_url: "The brand logo image at the top left of your site, should be a wide rectangle shape."

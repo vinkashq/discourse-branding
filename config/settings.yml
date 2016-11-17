@@ -1,0 +1,7 @@
+plugins:
+  brand_name:
+    default: 'Discourse'
+    client: true
+  brand_logo_url:
+    default: 'http://discourse.com:3000/images/d-logo-sketch.png'
+    client: true
