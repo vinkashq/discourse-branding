@@ -3,14 +3,13 @@
     position: absolute;
     top: 0;
     z-index: 1001;
-    background-color: white;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+    background-color: black;
 }
 .b-header {
     left: 0;
     z-index: 1000;
-    padding-top: 3px;
-    height: 60px;
+    height: 48px;
+    margin-bottom: 0;
 }
 .b-header .contents {
     margin: 8px 0;
@@ -19,5 +18,11 @@
     float: left;
 }
 .b-header .title a, .b-header .title a:visited {
-    color: #333333;
+    color: #cccccc;
+}
+.d-header {
+  margin-top: 48px;
+}
+#main-outlet {
+  margin-top: 130px;
 }

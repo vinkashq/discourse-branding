@@ -3,7 +3,7 @@
 
   $(window).scroll(function(){
     var fromTop = $(window).scrollTop();
-    var margin = 60 - fromTop;
+    var margin = 48 - fromTop;
     if(margin < 0) {
        margin = 0;
     }
