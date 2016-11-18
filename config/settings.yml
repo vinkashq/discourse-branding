@@ -1,6 +1,6 @@
 branding:
   branding_enabled:
-    default: false
+    default: true
     client: true
   brand_name:
     default: 'Discourse'
