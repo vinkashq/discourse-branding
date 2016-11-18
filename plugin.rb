@@ -4,5 +4,5 @@
 # authors: Vinoth Kannan (vinothkannan@vinkas.com)
 # url: https://github.com/vinkas0/discourse-branding
 
-register_asset 'stylesheets/brand-header.scss'
-register_asset "javascripts/brand-header.js"
+register_asset 'stylesheets/branding.scss'
+register_asset "javascripts/branding.js"
