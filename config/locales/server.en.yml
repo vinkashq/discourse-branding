@@ -1,4 +1,6 @@
 en:
   site_settings:
+    branding_enabled: "Enable 'Branding' plugin"
     brand_name: "The name of your brand, as used in the title tag."
     brand_logo_url: "The brand logo image at the top left of your site, should be a wide rectangle shape."
+    brand_url: "Absolute url of your brand website"
