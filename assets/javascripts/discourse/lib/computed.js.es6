@@ -6,6 +6,6 @@
 **/
 export function siteTitle() {
   return Em.computed(function() {
-    return Discourse.SiteSettings['brand_name'] + Discourse.SiteSettings['title'];
+    return Discourse.SiteSettings['brand_name'] + ' ' + Discourse.SiteSettings['title'];
   }).property();
 }
