@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   z-index: 1001;
-  background-color: scale-color($primary, $darkness: 50%);
+  background-color: $tertiary;
   left: 0;
   z-index: 1000;
   height: 48px;
@@ -42,10 +42,13 @@ header #brand-text-logo {
   float: right;
 }
 .b-navigation a {
-  color: #cccccc;
+  color: scale-color($tertiary, $lightness: 90%);
   padding: 0 16px;
   display: inline-block;
   line-height: 32px;
+  :hover {
+    color: scale-color($quaternary, $lightness: 10%);
+  }
 }
 #main-outlet {
   padding-top: 130px;
