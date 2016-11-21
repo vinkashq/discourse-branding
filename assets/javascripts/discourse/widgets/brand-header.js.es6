@@ -8,7 +8,11 @@ createWidget('brand-menu-item', {
   tagName: 'li',
 
   html(attrs) {
-    return h('a', { attributes: { href: attrs.href, 'data-auto-route': true } }, attrs.text);
+    var auto_route = true;
+    if(attrs.external) {
+      auto_route = false;
+    }
+    return h('a', { attributes: { href: attrs.href, 'data-auto-route': auto_route } }, attrs.text);
   }
 });
 
@@ -20,7 +24,8 @@ createWidget('brand-navigation', {
 
     if(attrs.brand_home.enabled) {
       menuItems.push(this.attach('brand-menu-item', { href: attrs.brand_home.url,
-                                                      text: I18n.t('brand.home') }));
+                                                      text: I18n.t('brand.home'),
+                                                      external: true }));
     }
     return menuItems;
   }
