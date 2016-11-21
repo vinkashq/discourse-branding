@@ -1,23 +1,26 @@
+@import "theme_variables";
+
 .b-header {
   width: 100%;
   position: absolute;
   top: 0;
   z-index: 1001;
-  background-color: black;
-}
-.b-header {
+  background-color: scale-color($primary, $darkness: 50%);
   left: 0;
   z-index: 1000;
   height: 48px;
   margin-bottom: 0;
+
+  .contents {
+    margin: 8px 0;
+  }
+
+  .title {
+    float: left;
+    margin-right: 24px;
+  }
 }
-.b-header .contents {
-  margin: 8px 0;
-}
-.b-header .title {
-  float: left;
-  margin-right: 24px;
-}
+
 .b-header .title a, .b-header .title a:visited {
   color: #cccccc;
 }
