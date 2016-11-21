@@ -32,9 +32,9 @@ export default createWidget('brand-header', {
 
   html(attrs, state) {
     const { siteSettings } = this;
-    const contents = [ this.attach('brand-logo', { home: { enabled: siteSettings.brand_home_link_enabled,
-                                                           url: siteSettings.brand_url } }),
-                       this.attach('brand-navigation', attrs) ];
+    const contents = [ this.attach('brand-logo'),
+                       this.attach('brand-navigation', { brand_home: { enabled: siteSettings.brand_home_link_enabled,
+                                                                       url: siteSettings.brand_url } }) ];
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }
