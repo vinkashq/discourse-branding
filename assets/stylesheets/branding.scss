@@ -19,10 +19,10 @@
     float: left;
     margin-right: 24px;
     a {
-      color: scale-color($secondary, $lightness: 90%);
+      color: scale-color($quaternary, $lightness: 90%);
     }
     &:visited {
-      color: scale-color($secondary, $lightness: 80%);
+      color: scale-color($quaternary, $lightness: 90%);
     }
   }
 
@@ -52,7 +52,7 @@
   display: inline-block;
   line-height: 32px;
   &:hover {
-    color: scale-color($quaternary, $lightness: 10%);
+    color: scale-color($quaternary, $lightness: 50%);
   }
 }
 #main-outlet {
