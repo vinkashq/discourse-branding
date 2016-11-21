@@ -1,5 +1,5 @@
 import ApplicationRoute from 'discourse/routes/application';
-import { siteTitle } from "discourse/plugins/branding/lib/computed";
+import { siteTitle } from "discourse/plugins/branding/discourse/lib/computed";
 
 export default {
   name: 'apply-branding',
