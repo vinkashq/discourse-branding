@@ -26,7 +26,8 @@ export default createWidget('brand-logo', {
   },
 
   html() {
-    return h('a', { attributes: { href: this.href(), 'data-auto-route': true } }, this.logo());
+    const { siteSettings } = this;
+    return h('a', { attributes: { href: siteSettings.brand_url, 'data-auto-route': true } }, this.logo());
   },
 
   click(e) {
