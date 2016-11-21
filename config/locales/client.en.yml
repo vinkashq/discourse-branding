@@ -4,5 +4,6 @@ en:
       site_settings:
         categories:
           branding: "Branding"
-  brand:
-    home: "Home"
+  js:
+    brand:
+      home: "Home"
