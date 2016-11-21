@@ -8,7 +8,7 @@ createWidget('brand-menu-item', {
   tagName: 'li',
 
   html(attrs) {
-    h('a', { attributes: { href: attrs.href, 'data-auto-route': true } }, attrs.text);
+    return h('a', { attributes: { href: attrs.href, 'data-auto-route': true } }, attrs.text);
   }
 });
 
@@ -18,9 +18,10 @@ createWidget('brand-navigation', {
   html(attrs) {
     const menuItems = [];
 
-
-    menuItems.push(this.attach('brand-menu-item', { href: '/',
-                                                    text: 'Home' }));
+    if(attrs.brand_home.enabled) {
+      menuItems.push(this.attach('brand-menu-item', { href: attrs.brand_home.url,
+                                                      text: I18n.t('brand.home') }));
+    }
     return menuItems;
   }
 });
@@ -30,8 +31,10 @@ export default createWidget('brand-header', {
   buildKey: () => `header`,
 
   html(attrs, state) {
-
-    const contents = [ this.attach('brand-logo', attrs), this.attach('brand-navigation', attrs) ];
+    const { siteSettings } = this;
+    const contents = [ this.attach('brand-logo', { home: { enabled: siteSettings.brand_home_link_enabled,
+                                                           url: siteSettings.brand_url } }),
+                       this.attach('brand-navigation', attrs) ];
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }

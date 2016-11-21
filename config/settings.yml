@@ -8,6 +8,12 @@ branding:
   brand_logo_url:
     default: '/images/d-logo-sketch.png'
     client: true
+  brand_mobile_logo_url:
+    default: '/images/d-logo-sketch.png'
+    client: true
   brand_url:
     default: '/'
+    client: true
+  brand_home_link_enabled:
+    default: true
     client: true

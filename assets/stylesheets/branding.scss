@@ -16,15 +16,25 @@
 }
 .b-header .title {
     float: left;
+    margin-right: 24px;
 }
 .b-header .title a, .b-header .title a:visited {
     color: #cccccc;
 }
 .d-header {
-  margin-top: 48px;
+    margin-top: 48px;
 }
 header #brand-text-logo {
-  line-height: 32px;
+    line-height: 32px;
+}
+.b-navigation {
+  float: left;
+}
+.b-navigation a {
+    color: #cccccc;
+    padding: 8px;
+    display: inline-block;
+    line-height: 32px;
 }
 #main-outlet {
   padding-top: 130px;
