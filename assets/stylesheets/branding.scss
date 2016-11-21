@@ -1,40 +1,44 @@
 .b-header {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 1001;
-    background-color: black;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1001;
+  background-color: black;
 }
 .b-header {
-    left: 0;
-    z-index: 1000;
-    height: 48px;
-    margin-bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 48px;
+  margin-bottom: 0;
 }
 .b-header .contents {
-    margin: 8px 0;
+  margin: 8px 0;
 }
 .b-header .title {
-    float: left;
-    margin-right: 24px;
+  float: left;
+  margin-right: 24px;
 }
 .b-header .title a, .b-header .title a:visited {
-    color: #cccccc;
+  color: #cccccc;
 }
 .d-header {
-    margin-top: 48px;
+  margin-top: 48px;
 }
 header #brand-text-logo {
-    line-height: 32px;
+  line-height: 32px;
 }
 .b-navigation {
   float: left;
 }
+.b-navigation li {
+  list-style: none;
+  float: right;
+}
 .b-navigation a {
-    color: #cccccc;
-    padding: 8px;
-    display: inline-block;
-    line-height: 32px;
+  color: #cccccc;
+  padding: 0 16px;
+  display: inline-block;
+  line-height: 32px;
 }
 #main-outlet {
   padding-top: 130px;
