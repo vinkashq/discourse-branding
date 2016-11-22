@@ -1,1 +1,1 @@
-# discourse-brand-header
+# discourse-branding

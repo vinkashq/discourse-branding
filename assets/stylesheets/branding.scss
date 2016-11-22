@@ -1,0 +1,60 @@
+@import "theme_variables";
+
+.b-header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1001;
+  background-color: $tertiary;
+  left: 0;
+  z-index: 1000;
+  height: 48px;
+  margin-bottom: 0;
+
+  .contents {
+    margin: 8px 0;
+  }
+
+  .title {
+    float: left;
+    margin-right: 24px;
+    a {
+      color: scale-color($quaternary, $lightness: 90%);
+    }
+    &:visited {
+      color: scale-color($quaternary, $lightness: 90%);
+    }
+  }
+
+  #brand-logo {
+    max-height: 32px;
+  }
+
+  #brand-text-logo {
+    line-height: 32px;
+  }
+}
+
+.d-header {
+  margin-top: 48px;
+}
+.b-navigation {
+  float: left;
+  margin: 0;
+}
+.b-navigation li {
+  list-style: none;
+  float: right;
+}
+.b-navigation a {
+  color: scale-color($tertiary, $lightness: 90%);
+  padding: 0 16px;
+  display: inline-block;
+  line-height: 32px;
+  &:hover {
+    color: scale-color($quaternary, $lightness: 50%);
+  }
+}
+#main-outlet {
+  padding-top: 130px;
+}
