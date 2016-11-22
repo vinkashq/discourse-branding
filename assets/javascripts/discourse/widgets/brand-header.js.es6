@@ -1,33 +1,19 @@
-import { createWidget } from 'discourse/widgets/widget';
-import DiscourseURL from 'discourse/lib/url';
-import { wantsNewWindow } from 'discourse/lib/intercept-click';
-
+import { createWidget, applyDecorators } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 
-createWidget('brand-menu-item', {
-  tagName: 'li',
+const flatten = array => [].concat.apply([], array);
+
+createWidget('nav-links', {
+  tagName: 'nav.links',
 
   html(attrs) {
-    var auto_route = true;
-    if(attrs.external) {
-      auto_route = false;
-    }
-    return h('a', { attributes: { href: attrs.href, 'data-auto-route': auto_route } }, attrs.text);
-  }
-});
+    const links = [].concat(attrs.contents());
+    const liOpts = { };
 
-createWidget('brand-navigation', {
-  tagName: 'ul.b-navigation',
+    const result = [];
+    result.push(h('ul.nav.nav-pills', links.map(l => h('li', liOpts, l))));
 
-  html(attrs) {
-    const menuItems = [];
-
-    if(attrs.brand_home.enabled) {
-      menuItems.push(this.attach('brand-menu-item', { href: attrs.brand_home.url,
-                                                      text: I18n.t('brand.home'),
-                                                      external: true }));
-    }
-    return menuItems;
+    return result;
   }
 });
 
@@ -35,11 +21,25 @@ export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
 
+  generalLinks() {
+    const { siteSettings } = this;
+    const links = [];
+
+    if(siteSettings.brand_home_link_enabled) {
+      links.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
+    }
+
+    const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
+    return links.concat(extraLinks).map(l => this.attach('link', l));
+  },
+
   html(attrs, state) {
     const { siteSettings } = this;
-    const contents = [ this.attach('brand-logo'),
-                       this.attach('brand-navigation', { brand_home: { enabled: siteSettings.brand_home_link_enabled,
-                                                                       url: siteSettings.brand_url } }) ];
+    const contents = [];
+
+    contents.push(this.attach('brand-logo'));
+
+    contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }
