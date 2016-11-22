@@ -1,7 +1,4 @@
 import { createWidget, applyDecorators } from 'discourse/widgets/widget';
-import DiscourseURL from 'discourse/lib/url';
-import { wantsNewWindow } from 'discourse/lib/intercept-click';
-
 import { h } from 'virtual-dom';
 
 const flatten = array => [].concat.apply([], array);
@@ -16,7 +13,7 @@ generalLinks() {
 
   const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
   return links.concat(extraLinks).map(l => this.attach('link', l));
-}
+};
 
 export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
