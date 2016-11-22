@@ -65,15 +65,16 @@ export default createWidget('brand-header', {
   html(attrs, state) {
     const { siteSettings } = this;
     const mobileView = this.site.mobileView;
-    if(mobileView) {
-      return "";
-    }
-    
+
     const contents = [];
 
     contents.push(this.attach('brand-logo'));
 
-    contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
+    if(mobileView) {
+
+    } else {
+      contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
+    }
 
     if(siteSettings.navigation_enabled) {
       this.load();
