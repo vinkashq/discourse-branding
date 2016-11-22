@@ -22,10 +22,10 @@ export default createWidget('brand-header', {
   buildKey: () => `header`,
 
   defaultState() {
-    return { generalLinks: [], socialIcons: [], };
+    return { generalLinks: [], socialIcons: [], isLoaded: false};
   },
 
-  loadFromNavigation() {
+  load() {
     var self = this;
     this.store.findAll('menu-link').then(function(rs) {
       rs.content.forEach(function(l) {
@@ -36,6 +36,7 @@ export default createWidget('brand-header', {
           self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
         }
       });
+      self.state.isLoaded = true;
       self.scheduleRerender();
     });
   },
@@ -55,8 +56,9 @@ export default createWidget('brand-header', {
     const { siteSettings } = this;
     const contents = [];
 
-    if(siteSettings.navigation_enabled) {
-      this.loadFromNavigation();
+
+    if(siteSettings.navigation_enabled && this.state.isLoaded == false) {
+      this.load();
     }
 
     contents.push(this.attach('brand-logo'));
