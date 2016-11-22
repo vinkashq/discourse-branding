@@ -48,7 +48,7 @@ export default createWidget('brand-header', {
   },
 
   generalLinks() {
-    const links = [];
+    var links = [];
     const { siteSettings } = this;
 
     if(siteSettings.brand_home_link_enabled) {
