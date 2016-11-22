@@ -1,4 +1,5 @@
 import { createWidget, applyDecorators } from 'discourse/widgets/widget';
+import { iconNode } from 'discourse/helpers/fa-icon-node';
 import { h } from 'virtual-dom';
 
 const flatten = array => [].concat.apply([], array);
@@ -49,8 +50,7 @@ export default createWidget('brand-header', {
           self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
         }
         if(l.visible_brand_icon) {
-          const icon = h('i.fa.fa-' + l.name);
-          self.state.iconLinks.push({ href: l.url, rawLabel: icon });
+          self.state.iconLinks.push({ href: l.url, icon: l.icon, name: l.name });
         }
       });
       self.state.loading = false;
@@ -82,7 +82,7 @@ export default createWidget('brand-header', {
 
     const extraLinks = flatten(applyDecorators(this, 'iconLinks', this.attrs, this.state));
     links = links.concat(extraLinks);
-    return links.map(l => this.attach('link', l));
+    return links.map(l => h('a.icon', {attributes: { title: l.name, href: l.href }}, [iconNode(l.icon)]));
   },
 
   html(attrs, state) {

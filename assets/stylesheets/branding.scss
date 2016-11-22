@@ -54,6 +54,27 @@
       }
     }
   }
+
+  .icons {
+    float: right;
+    text-align: center;
+    > ul {
+      margin: 0 0 0 5px;
+      > li {
+        float: left;
+        list-style: none;
+      }
+    }
+    [class^="fa fa-"] {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      line-height: 28px;
+      color: white;
+      display: inline-block;
+      margin: 2px;
+    }
+  }
 }
 
 .d-header {
