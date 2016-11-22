@@ -42,6 +42,7 @@ export default createWidget('brand-header', {
         self.state.loading = false;
         self.state.generalLinks.concat(generalLinks);
         self.state.socialIcons.concat(socialIcons);
+        self.scheduleRerender();
       });
     }
   },
