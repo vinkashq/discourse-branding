@@ -51,7 +51,7 @@ export default createWidget('brand-header', {
         }
         if(l.visible_brand_icon) {
           const icon = h('i.fa.fa-' + l.name);
-          self.state.iconLinks.push({ href: l.url, rawLabel: icon });
+          self.state.iconLinks.push({ href: l.url, icon: icon, name: l.name });
         }
       });
       self.state.loading = false;
@@ -83,7 +83,7 @@ export default createWidget('brand-header', {
 
     const extraLinks = flatten(applyDecorators(this, 'iconLinks', this.attrs, this.state));
     links = links.concat(extraLinks);
-    return links.map(l => h('a.icon', {title: l.name}, [iconNode(l.name)]));
+    return links.map(l => h('a.icon', {attributes: { title: l.name, href: l.href }}, [iconNode(l.icon)]));
   },
 
   html(attrs, state) {
