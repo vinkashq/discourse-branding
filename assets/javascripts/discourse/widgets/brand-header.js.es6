@@ -50,8 +50,7 @@ export default createWidget('brand-header', {
           self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
         }
         if(l.visible_brand_icon) {
-          const icon = h('i.fa.fa-' + l.name);
-          self.state.iconLinks.push({ href: l.url, icon: icon, name: l.name });
+          self.state.iconLinks.push({ href: l.url, icon: l.name, name: l.name });
         }
       });
       self.state.loading = false;
