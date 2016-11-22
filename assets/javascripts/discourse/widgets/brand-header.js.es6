@@ -26,20 +26,18 @@ export default createWidget('brand-header', {
   },
 
   loadFromNavigation() {
-    const { siteSettings } = this;
-    if(siteSettings.navigation_enabled) {
-      this.store.findAll('menu-link').then(function(rs) {
-        rs.content.forEach(function(l) {
-          if(l.visible_brand_general) {
-            this.state.generalLinks.push({ href: l.url, rawLabel: l.name });
-          }
-          if(l.visible_brand_social) {
-            this.state.socialIcons.push({ href: l.url, rawLabel: l.name });
-          }
-        });
-        this.scheduleRerender();
+    var self = this;
+    this.store.findAll('menu-link').then(function(rs) {
+      rs.content.forEach(function(l) {
+        if(l.visible_brand_general) {
+          self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
+        }
+        if(l.visible_brand_social) {
+          self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
+        }
       });
-    }
+      this.scheduleRerender();
+    });
   },
 
   generalLinks() {
