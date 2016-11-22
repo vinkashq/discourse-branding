@@ -62,6 +62,7 @@
       margin: 0 0 0 5px;
       > li {
         float: left;
+        list-style: none;
       }
     }
     .icon {
@@ -83,11 +84,13 @@
       }
     }
     [class^="fa fa-"] {
-      width: 32px;
-      height: 32px;
-      font-size: 1.714em;
-      line-height: 32px;
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      line-height: 28px;
+      color: white;
       display: inline-block;
+      margin: 2px;
     }
   }
 }
