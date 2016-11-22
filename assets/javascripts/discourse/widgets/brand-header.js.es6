@@ -21,13 +21,13 @@ export default createWidget('brand-header', {
 
   html(attrs, state) {
     const { siteSettings } = this;
-    const results = [];
+    const contents = [];
 
-    results.push(this.attach('brand-logo'));
+    contents.push(this.attach('brand-logo'));
 
-    results.push(this.attach('menu-links', { contents: () => this.generalLinks() }));
+    contents.push(this.attach('menu-links', { contents: () => this.generalLinks() }));
 
-    return h('div.wrap', h('div.contents.clearfix', { contents: () => results }));
+    return h('div.wrap', h('div.contents.clearfix', contents));
   }
 
 });
