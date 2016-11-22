@@ -21,21 +21,45 @@ export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
 
+  defaultState() {
+    return { generalLinks: [], socialIcons: [], };
+  },
+
+  loadFromNavigation() {
+    const { siteSettings } = this;
+    if(siteSettings.navigation_enabled) {
+      this.store.findAll('menu-link').then(function(rs) {
+        rs.content.forEach(function(l) {
+          if(l.visible_brand_general) {
+            this.state.generalLinks.push({ href: l.url, rawLabel: l.name });
+          }
+          if(l.visible_brand_social) {
+            this.state.socialIcons.push({ href: l.url, rawLabel: l.name });
+          }
+        });
+        this.scheduleRerender();
+      });
+    }
+  },
+
   generalLinks() {
     const { siteSettings } = this;
-    const links = [];
 
     if(siteSettings.brand_home_link_enabled) {
-      links.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
+      this.state.generalLinks.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
     }
 
     const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
-    return links.concat(extraLinks).map(l => this.attach('link', l));
+    return this.state.generalLinks.concat(extraLinks).map(l => this.attach('link', l));
   },
 
   html(attrs, state) {
     const { siteSettings } = this;
     const contents = [];
+
+    if(siteSettings.navigation_enabled) {
+      this.loadFromNavigation();
+    }
 
     contents.push(this.attach('brand-logo'));
 
