@@ -3,6 +3,20 @@ import { h } from 'virtual-dom';
 
 const flatten = array => [].concat.apply([], array);
 
+createWidget('nav-links', {
+  tagName: 'nav.links',
+
+  html(attrs) {
+    const links = [].concat(attrs.contents());
+    const liOpts = { };
+
+    const result = [];
+    result.push(h('ul.nav.nav-pills', links.map(l => h('li', liOpts, l))));
+
+    return result;
+  }
+});
+
 export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
@@ -25,7 +39,7 @@ export default createWidget('brand-header', {
 
     contents.push(this.attach('brand-logo'));
 
-    contents.push(this.attach('menu-links', { contents: () => this.generalLinks() }));
+    contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }
