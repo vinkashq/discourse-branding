@@ -45,7 +45,7 @@
       line-height: 22px;
       &:hover {
         color: $quaternary;
-        background-color: dark-light-diff($quaternary, $tertiary, 70%, -70%);
+        background-color: dark-light-diff($quaternary, $tertiary, -70%, 70%);
       }
       &.active > a, > a.active {
         color: $secondary;
