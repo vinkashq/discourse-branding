@@ -1,4 +1,5 @@
 import { createWidget, applyDecorators } from 'discourse/widgets/widget';
+import { iconNode } from 'discourse/helpers/fa-icon-node';
 import { h } from 'virtual-dom';
 
 const flatten = array => [].concat.apply([], array);
@@ -82,7 +83,7 @@ export default createWidget('brand-header', {
 
     const extraLinks = flatten(applyDecorators(this, 'iconLinks', this.attrs, this.state));
     links = links.concat(extraLinks);
-    return links.map(l => this.attach('link', l));
+    return links.map(l => h('a.icon', {title: l.name}, [iconNode(l.name)]));
   },
 
   html(attrs, state) {
