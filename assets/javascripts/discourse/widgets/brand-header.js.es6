@@ -21,16 +21,45 @@ export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
 
+  defaultState() {
+    return { generalLinks: [], socialIcons: [], loading: true};
+  },
+
+  load() {
+    if(this.state.loading) {
+      const self = this;
+      const generalLinks = [];
+      const socialIcons = [];
+      this.store.findAll('menu-link').then(function(rs) {
+        rs.content.forEach(function(l) {
+          if(l.visible_brand_general) {
+            self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
+          }
+          if(l.visible_brand_social) {
+            self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
+          }
+        });
+        self.state.loading = false;
+        self.state.generalLinks.concat(generalLinks);
+        self.state.socialIcons.concat(socialIcons);
+        self.scheduleRerender();
+      });
+    }
+  },
+
   generalLinks() {
+    var links = [];
     const { siteSettings } = this;
-    const links = [];
 
     if(siteSettings.brand_home_link_enabled) {
       links.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
     }
 
+    links = links.concat(this.state.generalLinks);
+
     const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
-    return links.concat(extraLinks).map(l => this.attach('link', l));
+    links = links.concat(extraLinks);
+    return links.map(l => this.attach('link', l));
   },
 
   html(attrs, state) {
@@ -40,6 +69,10 @@ export default createWidget('brand-header', {
     contents.push(this.attach('brand-logo'));
 
     contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
+
+    if(siteSettings.navigation_enabled) {
+      this.load();
+    }
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }
