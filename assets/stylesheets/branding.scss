@@ -33,27 +33,19 @@
   #brand-text-logo {
     line-height: 32px;
   }
+
+  nav.links {
+    float: left;
+  }
+
+  .nav-pills > li > a {
+    color: scale-color($tertiary, $lightness: 90%);
+    line-height: 24px;
+  }
 }
 
 .d-header {
   margin-top: 48px;
-}
-.b-navigation {
-  float: left;
-  margin: 0;
-}
-.b-navigation li {
-  list-style: none;
-  float: right;
-}
-.b-navigation a {
-  color: scale-color($tertiary, $lightness: 90%);
-  padding: 0 16px;
-  display: inline-block;
-  line-height: 32px;
-  &:hover {
-    color: scale-color($quaternary, $lightness: 50%);
-  }
 }
 #main-outlet {
   padding-top: 130px;
