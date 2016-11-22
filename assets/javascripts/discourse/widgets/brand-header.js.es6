@@ -55,10 +55,10 @@ export default createWidget('brand-header', {
       links.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
     }
 
-    links.concat(this.state.generalLinks);
+    links = links.concat(this.state.generalLinks);
 
     const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
-    links.concat(extraLinks);
+    links = links.concat(extraLinks);
     return links.map(l => this.attach('link', l));
   },
 
