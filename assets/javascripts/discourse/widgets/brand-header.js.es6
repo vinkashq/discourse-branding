@@ -36,7 +36,7 @@ export default createWidget('brand-header', {
           self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
         }
       });
-      this.scheduleRerender();
+      self.scheduleRerender();
     });
   },
 
