@@ -27,7 +27,9 @@ export default createWidget('brand-header', {
 
   load() {
     if(this.state.loading) {
-      var self = this;
+      const self = this;
+      const generalLinks = [];
+      const socialIcons = [];
       this.store.findAll('menu-link').then(function(rs) {
         rs.content.forEach(function(l) {
           if(l.visible_brand_general) {
@@ -38,23 +40,25 @@ export default createWidget('brand-header', {
           }
         });
         self.state.loading = false;
-        //self.scheduleRerender();
+        self.state.generalLinks.concat(generalLinks);
+        self.state.socialIcons.concat(socialIcons);
       });
     }
   },
 
   generalLinks() {
-    if(this.state.loading) {
-      const { siteSettings } = this;
+    const links = [];
+    const { siteSettings } = this;
 
-      if(siteSettings.brand_home_link_enabled) {
-        this.state.generalLinks.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
-      }
-
-      const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
-      this.state.generalLinks.concat(extraLinks).map(l => this.attach('link', l));
+    if(siteSettings.brand_home_link_enabled) {
+      links.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
     }
-    return this.state.generalLinks;
+
+    links.concat(this.state.generalLinks);
+
+    const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
+    links.concat(extraLinks);
+    return links.map(l => this.attach('link', l));
   },
 
   html(attrs, state) {
