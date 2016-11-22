@@ -22,48 +22,52 @@ export default createWidget('brand-header', {
   buildKey: () => `header`,
 
   defaultState() {
-    return { generalLinks: [], socialIcons: [], isLoaded: false};
+    return { generalLinks: [], socialIcons: [], loading: true};
   },
 
   load() {
-    var self = this;
-    this.store.findAll('menu-link').then(function(rs) {
-      rs.content.forEach(function(l) {
-        if(l.visible_brand_general) {
-          self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
-        }
-        if(l.visible_brand_social) {
-          self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
-        }
+    if(this.state.loading) {
+      var self = this;
+      this.store.findAll('menu-link').then(function(rs) {
+        rs.content.forEach(function(l) {
+          if(l.visible_brand_general) {
+            self.state.generalLinks.push({ href: l.url, rawLabel: l.name });
+          }
+          if(l.visible_brand_social) {
+            self.state.socialIcons.push({ href: l.url, rawLabel: l.name });
+          }
+        });
+        self.state.loading = false;
+        self.scheduleRerender();
       });
-      self.state.isLoaded = true;
-      self.scheduleRerender();
-    });
+    }
   },
 
   generalLinks() {
-    const { siteSettings } = this;
+    if(this.state.loading) {
+      const { siteSettings } = this;
 
-    if(siteSettings.brand_home_link_enabled) {
-      this.state.generalLinks.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
+      if(siteSettings.brand_home_link_enabled) {
+        this.state.generalLinks.push({ href: siteSettings.brand_url, className: 'brand-home-link', label: 'brand.home' });
+      }
+
+      const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
+      this.state.generalLinks.concat(extraLinks).map(l => this.attach('link', l));
     }
-
-    const extraLinks = flatten(applyDecorators(this, 'generalLinks', this.attrs, this.state));
-    return this.state.generalLinks.concat(extraLinks).map(l => this.attach('link', l));
+    return this.state.generalLinks;
   },
 
   html(attrs, state) {
     const { siteSettings } = this;
     const contents = [];
 
-
-    if(siteSettings.navigation_enabled && this.state.isLoaded == false) {
-      this.load();
-    }
-
     contents.push(this.attach('brand-logo'));
 
     contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
+
+    if(siteSettings.navigation_enabled) {
+      this.load();
+    }
 
     return h('div.wrap', h('div.contents.clearfix', contents));
   }
