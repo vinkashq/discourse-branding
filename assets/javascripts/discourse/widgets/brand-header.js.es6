@@ -38,7 +38,7 @@ export default createWidget('brand-header', {
           }
         });
         self.state.loading = false;
-        self.scheduleRerender();
+        //self.scheduleRerender();
       });
     }
   },
