@@ -64,6 +64,11 @@ export default createWidget('brand-header', {
 
   html(attrs, state) {
     const { siteSettings } = this;
+    const mobileView = this.site.mobileView;
+    if(mobileView) {
+      return "";
+    }
+    
     const contents = [];
 
     contents.push(this.attach('brand-logo'));
