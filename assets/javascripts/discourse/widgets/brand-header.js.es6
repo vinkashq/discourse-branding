@@ -29,6 +29,14 @@ createWidget('nav-icons', {
   }
 });
 
+createWidget('brand-header-right', {
+  tagName: 'div.panel.clearfix',
+
+  html(attrs) {
+    return attrs.contents;
+  },
+});
+
 createWidget('brand-header-icons', {
   tagName: 'ul.icons.clearfix',
 
@@ -122,17 +130,21 @@ export default createWidget('brand-header', {
 
     contents.push(this.attach('brand-logo'));
 
+    const panelContents = [];
+
     if(mobileView) {
 
-      contents.push(h('div.panel.clearfix', {} , this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible })));
+      panelContents.push(this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible }));
 
       if (state.hamburgerVisible) {
-        contents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
+        panelContents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
       }
     } else {
       contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
-      contents.push(h('div.panel.clearfix', {} , this.attach('nav-icons', { contents: () => this.iconLinks() })));
+      panelContents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
     }
+
+    contents.push(this.attach('brand-header-right'), { contents: () => panelContents })
 
     if(this.state.loading) {
       if(siteSettings.navigation_enabled) {
