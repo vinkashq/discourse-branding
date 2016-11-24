@@ -33,7 +33,7 @@ createWidget('brand-header-right', {
   tagName: 'div.panel.clearfix',
 
   html(attrs) {
-    return attrs.contents;
+    return attrs.contents();
   },
 });
 
