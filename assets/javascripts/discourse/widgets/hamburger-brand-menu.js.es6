@@ -7,7 +7,7 @@ export default createWidget('hamburger-brand-menu', {
   panelContents(generalLinks, iconLinks) {
     const results = [];
 
-    results.push(this.attach('nav-links', { contents: () => generalLinks }));
+    results.push(this.attach('menu-links', { contents: () => generalLinks }));
     results.push(h('hr'));
     results.push(this.attach('nav-icons', { contents: () => iconLinks }));
 
