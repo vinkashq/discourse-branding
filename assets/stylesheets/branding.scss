@@ -83,7 +83,7 @@
     }
   }
 
-  .panel ul.icons {
+  .panel > ul.icons {
     float: right;
     [class^="fa fa-"] {
       color: $secondary;
