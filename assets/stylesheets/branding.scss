@@ -7,7 +7,7 @@
   z-index: 1001;
   background-color: $tertiary;
   left: 0;
-  z-index: 1000;
+  z-index: 1002;
   height: 48px;
   margin-bottom: 0;
 
@@ -55,24 +55,38 @@
     }
   }
 
-  .icons {
+  .panel {
     float: right;
+    position: relative;
+  }
+
+  .menu-panel {
+    position: absolute;
+    top: 100%;
+    right: -10px;
+  }
+
+  ul.icons {
     text-align: center;
-    > ul {
-      margin: 0 0 0 5px;
-      > li {
-        float: left;
-        list-style: none;
-      }
+    margin: 0 0 0 5px;
+    > li {
+      float: left;
+      list-style: none;
     }
     [class^="fa fa-"] {
       width: 28px;
       height: 28px;
       font-size: 16px;
       line-height: 28px;
-      color: white;
       display: inline-block;
       margin: 2px;
+    }
+  }
+
+  .panel > ul.icons {
+    float: right;
+    [class^="fa fa-"] {
+      color: $secondary;
     }
   }
 }

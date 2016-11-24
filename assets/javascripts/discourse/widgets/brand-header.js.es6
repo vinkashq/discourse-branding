@@ -19,22 +19,59 @@ createWidget('nav-links', {
 });
 
 createWidget('nav-icons', {
-  tagName: 'nav.icons',
+  tagName: 'ul.icons.clearfix',
 
   html(attrs) {
     const links = [].concat(attrs.contents());
     const liOpts = { };
 
-    const result = [];
-    result.push(h('ul', links.map(l => h('li', liOpts, l))));
-
-    return result;
+    return links.map(l => h('li', liOpts, l));
   }
+});
+
+createWidget('brand-header-right', {
+  tagName: 'div.panel.clearfix',
+
+  html(attrs) {
+    return attrs.contents();
+  },
+});
+
+createWidget('brand-header-icons', {
+  tagName: 'ul.icons.clearfix',
+
+  buildAttributes() {
+    return { role: 'navigation' };
+  },
+
+  html(attrs) {
+    const hamburger = this.attach('header-dropdown', {
+                            title: 'hamburger_brand_menu',
+                            icon: 'bars',
+                            iconId: 'toggle-hamburger-brand-menu',
+                            active: attrs.hamburgerVisible,
+                            action: 'toggleHamburger'
+                          });
+    const icons = [hamburger];
+    return icons;
+  },
 });
 
 export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
+
+  defaultState() {
+    let states =  {
+      hamburgerVisible: false,
+    };
+
+    return states;
+  },
+
+  toggleHamburger() {
+    this.state.hamburgerVisible = !this.state.hamburgerVisible;
+  },
 
   defaultState() {
     return { generalLinks: [], iconLinks: [], loading: true};
@@ -93,12 +130,21 @@ export default createWidget('brand-header', {
 
     contents.push(this.attach('brand-logo'));
 
+    const panelContents = [];
+
     if(mobileView) {
 
+      panelContents.push(this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible }));
+
+      if (state.hamburgerVisible) {
+        panelContents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
+      }
     } else {
       contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
-      contents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
+      panelContents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
     }
+
+    contents.push(this.attach('brand-header-right', { contents: () => panelContents }));
 
     if(this.state.loading) {
       if(siteSettings.navigation_enabled) {
