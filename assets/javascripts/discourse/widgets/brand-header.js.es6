@@ -119,7 +119,7 @@ export default createWidget('brand-header', {
         contents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
       }
     } else {
-      contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
+      contents.push(this.attach('menu-links', { contents: () => this.generalLinks() }));
       contents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
     }
 
