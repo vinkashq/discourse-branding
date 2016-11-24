@@ -124,7 +124,7 @@ export default createWidget('brand-header', {
 
     if(mobileView) {
 
-      contents.push(this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible }));
+      contents.push(h('div.panel.clearfix', {} , this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible })));
 
       if (state.hamburgerVisible) {
         contents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
