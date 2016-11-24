@@ -32,6 +32,26 @@ createWidget('nav-icons', {
   }
 });
 
+createWidget('brand-header-icons', {
+  tagName: 'ul.icons.clearfix',
+
+  buildAttributes() {
+    return { role: 'navigation' };
+  },
+
+  html(attrs) {
+    const hamburger = this.attach('header-dropdown', {
+                            title: 'hamburger_brand_menu',
+                            icon: 'bars',
+                            iconId: 'toggle-hamburger-brand-menu',
+                            active: attrs.hamburgerVisible,
+                            action: 'toggleHamburger'
+                          });
+    const icons = [hamburger];
+    return icons;
+  },
+});
+
 export default createWidget('brand-header', {
   tagName: 'header.b-header.clearfix',
   buildKey: () => `header`,
@@ -106,14 +126,8 @@ export default createWidget('brand-header', {
     contents.push(this.attach('brand-logo'));
 
     if(mobileView) {
-      const hamburger = this.attach('header-dropdown', {
-                              title: 'hamburger_brand_menu',
-                              icon: 'bars',
-                              iconId: 'toggle-hamburger-brand-menu',
-                              active: attrs.hamburgerVisible,
-                              action: 'toggleHamburger'
-                            });
-      contents.push(hamburger);
+
+      contents.push(this.attach('brand-header-icons', { hamburgerVisible: state.hamburgerVisible }));
 
       if (state.hamburgerVisible) {
         contents.push(this.attach('hamburger-brand-menu', { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() }));
