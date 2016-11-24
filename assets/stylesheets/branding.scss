@@ -60,6 +60,12 @@
     position: relative;
   }
 
+  .menu-panel {
+    position: absolute;
+    top: 100%;
+    right: -10px;
+  }
+
   ul.icons {
     float: right;
     text-align: center;
