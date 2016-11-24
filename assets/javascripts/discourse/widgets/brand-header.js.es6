@@ -144,7 +144,7 @@ export default createWidget('brand-header', {
       panelContents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
     }
 
-    contents.push(this.attach('brand-header-right'), { contents: () => panelContents })
+    contents.push(this.attach('brand-header-right', { contents: () => panelContents }));
 
     if(this.state.loading) {
       if(siteSettings.navigation_enabled) {
