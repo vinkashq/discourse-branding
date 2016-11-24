@@ -19,16 +19,13 @@ createWidget('nav-links', {
 });
 
 createWidget('nav-icons', {
-  tagName: 'nav.icons',
+  tagName: 'ul.icons.clearfix',
 
   html(attrs) {
     const links = [].concat(attrs.contents());
     const liOpts = { };
 
-    const result = [];
-    result.push(h('ul', links.map(l => h('li', liOpts, l))));
-
-    return result;
+    return links.map(l => h('li', liOpts, l));
   }
 });
 
