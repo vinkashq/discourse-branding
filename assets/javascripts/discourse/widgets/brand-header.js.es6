@@ -37,6 +37,18 @@ export default createWidget('brand-header', {
   buildKey: () => `header`,
 
   defaultState() {
+    let states =  {
+      hamburgerVisible: false,
+    };
+
+    return states;
+  },
+
+  toggleHamburger() {
+    this.state.hamburgerVisible = !this.state.hamburgerVisible;
+  },
+
+  defaultState() {
     return { generalLinks: [], iconLinks: [], loading: true};
   },
 
@@ -94,7 +106,18 @@ export default createWidget('brand-header', {
     contents.push(this.attach('brand-logo'));
 
     if(mobileView) {
+      const hamburger = this.attach('header-dropdown', {
+                              title: 'hamburger_brand_menu',
+                              icon: 'bars',
+                              iconId: 'toggle-hamburger-brand-menu',
+                              active: attrs.hamburgerVisible,
+                              action: 'toggleHamburger'
+                            });
+      contents.push(hamburger);
 
+      if (state.hamburgerVisible) {
+        contents.push(this.attach('hamburger-brand-menu'), { generalLinks: this.generalLinks(), iconLinks: this.iconLinks() });
+      }
     } else {
       contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
       contents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
