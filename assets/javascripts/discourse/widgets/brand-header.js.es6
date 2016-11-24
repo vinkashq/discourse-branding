@@ -131,7 +131,7 @@ export default createWidget('brand-header', {
       }
     } else {
       contents.push(this.attach('nav-links', { contents: () => this.generalLinks() }));
-      contents.push(this.attach('nav-icons', { contents: () => this.iconLinks() }));
+      contents.push(h('div.panel.clearfix', {} , this.attach('nav-icons', { contents: () => this.iconLinks() })));
     }
 
     if(this.state.loading) {
