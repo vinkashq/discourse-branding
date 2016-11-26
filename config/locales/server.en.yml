@@ -10,3 +10,4 @@ en:
     banner_title: ""
     banner_description: ""
     banner_image_url: ""
+    banner_style: "If 'plugin' is chosen then `plugin-outlet: branding-banner` will be rendered instead"
