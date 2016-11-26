@@ -17,3 +17,15 @@ branding:
   brand_home_link_enabled:
     default: true
     client: true
+  banner_enabled:
+    default: false
+    client: true
+  banner_title:
+    default: ''
+    client: true
+  banner_description:
+    default: ''
+    client: true
+  banner_image_url:
+    default: ''
+    client: true
