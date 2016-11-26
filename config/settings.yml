@@ -29,3 +29,11 @@ branding:
   banner_image_url:
     default: ''
     client: true
+  banner_style:
+    default: 'default'
+    client: true
+    type: enum
+    choices:
+      - default
+      - smart
+      - plugin

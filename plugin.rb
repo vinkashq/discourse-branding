@@ -9,6 +9,8 @@ enabled_site_setting :branding_enabled
 register_asset 'stylesheets/branding.scss'
 register_asset "javascripts/branding.js"
 
+require_dependency 'enum_site_setting'
+
 after_initialize do
   ApplicationController.class_eval do
     alias_method :discourse_set_layout, :set_layout
@@ -35,4 +37,5 @@ after_initialize do
       end
     end
   end
+
 end
