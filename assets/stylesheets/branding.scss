@@ -140,7 +140,7 @@
       border: 32px solid  scale-color($quaternary, $lightness: 60%);
       border-radius: 250px;
       float: left;
-      margin:15px 20px 10px 0;
+      margin:15px 30px 10px 10px;
       position: relative;
       height: 215px;
       width: 215px;
@@ -148,6 +148,20 @@
     }
     h1 {
       color: $quaternary;
+      padding-top: 50px;
+    }
+    .banner-links {
+      float: right;
+      width: 30%;
+      margin-left: 30px;
+      font-size: 14px;
+      line-height: 100%;
+      ul {
+        margin: 0 0 0 10px;
+        li {
+          margin: 10px 0;
+        }
+      }
     }
   }
 }
