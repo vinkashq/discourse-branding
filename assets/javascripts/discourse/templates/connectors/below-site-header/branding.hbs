@@ -1,5 +1,3 @@
-{{#if view.siteSettings.banner_enabled}}
-  <div class="b-banner clearfix">
-    {{branding-banner siteSettings=siteSettings}}
-  </div>
+{{#if siteSettings.banner_enabled}}
+  {{branding-banner siteSettings=siteSettings}}
 {{/if}}

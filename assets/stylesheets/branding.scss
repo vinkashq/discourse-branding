@@ -92,6 +92,7 @@
 }
 
 .b-banner {
+  display: none;
   background-color: $tertiary;
   color: scale-color($tertiary, $lightness: 95%);
   padding-top: 111px;
@@ -132,7 +133,9 @@
     opacity: 0.85;
   }
 }
-
+.navigation-topics .b-banner, .navigation-categories .b-banner {
+  display: block;
+}
 .d-header {
   margin-top: 48px;
 }

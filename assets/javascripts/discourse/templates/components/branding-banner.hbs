@@ -1,11 +1,13 @@
-<div class="overlay">
-  <div class="wrap">
-    {{#if siteSettings.banner_title}}
-      <h1>{{siteSettings.banner_title}}</h1>
-      <div class="description">
-        <p>{{siteSettings.banner_description}}</p>
-      </div>
-    {{/if}}
+<div class="b-banner clearfix">
+  <div class="overlay">
+    <div class="wrap">
+      {{#if siteSettings.banner_title}}
+        <h1>{{siteSettings.banner_title}}</h1>
+        <div class="description">
+          <p>{{siteSettings.banner_description}}</p>
+        </div>
+      {{/if}}
+    </div>
   </div>
+  <img id="banner-image" src="{{siteSettings.banner_image_url}}" alt="{{siteSettings.banner_title}}">
 </div>
-<img id="banner-image" src="{{siteSettings.banner_image_url}}" alt="{{siteSettings.banner_title}}">
