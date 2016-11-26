@@ -93,6 +93,7 @@
 
 .b-banner {
   background-color: $tertiary;
+  color: scale-color($tertiary, $lightness: 95%);
   padding-top: 111px;
   margin-bottom: -111px;
   position: relative;
@@ -100,9 +101,19 @@
   text-align: center;
   font-size: 16px;
   line-height: 150%;
+  h1 {
+    padding: 30px 0 20px 0;
+  }
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+  .description {
+    margin:0 20%;
+  }
   .overlay {
     background-color: scale-color($quaternary, $lightness: -85%);
-    color: scale-color($quaternary, $lightness: 100%);
+    color: scale-color($quaternary, $lightness: 95%);
     text-shadow: 1px 1px scale-color($quaternary, $lightness: -100%);
     position: absolute;
     top: 111px;
@@ -112,21 +123,13 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.2s linear;
+    h1 {
+      color: $quaternary;
+    }
   }
   &:hover .overlay {
     visibility: visible;
     opacity: 0.85;
-  }
-  h1 {
-    color: $quaternary;
-    padding: 30px 0 20px 0;
-  }
-  img {
-    width: 100%;
-    max-width: 100%;
-  }
-  .description {
-    margin:0 20%;
   }
 }
 
