@@ -1,6 +1,6 @@
 # name: branding
 # about: Plugin to add a custom brand header for Discourse
-# version: 0.2.1
+# version: 0.2.2
 # authors: Vinoth Kannan (vinothkannan@vinkas.com)
 # url: https://github.com/vinkas0/discourse-branding
 
