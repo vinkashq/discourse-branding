@@ -9,7 +9,7 @@
     } else {
        marginTop = 0;
     }
-    $(".docked header.d-header").css('margin-top', marginTop + 'px');
+    $("header.d-header").css('margin-top', marginTop + 'px');
   });
 
 })(jQuery);
