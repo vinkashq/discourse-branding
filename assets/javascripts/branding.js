@@ -9,7 +9,7 @@
     } else {
        marginTop = 0;
     }
-    $("header.d-header").css('margin-top', marginTop + 'px');
+    $(".branding header.d-header").css('margin-top', marginTop + 'px');
   });
 
 })(jQuery);
