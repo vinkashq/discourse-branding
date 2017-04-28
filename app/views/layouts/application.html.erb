@@ -79,7 +79,7 @@
     </noscript>
 
     <%- unless customization_disabled? || loading_admin? %>
-      <%= SiteCustomization.custom_header(session[:preview_style], mobile_view? ? :mobile : :desktop) %>
+      <%= theme_lookup("header") %>
     <%- end %>
 
     <section id='main'>
