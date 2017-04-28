@@ -115,7 +115,7 @@
     <%= render_google_analytics_code %>
 
     <%- unless customization_disabled? %>
-      <%= raw SiteCustomization.custom_body_tag(session[:preview_style]) %>
+      <%= raw theme_lookup("body_tag") %>
     <%- end %>
   </body>
 </html>
