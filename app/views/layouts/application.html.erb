@@ -41,7 +41,7 @@
     <%- end %>
 
     <%- unless customization_disabled? %>
-      <%= raw SiteCustomization.custom_head_tag(session[:preview_style]) %>
+      <%= raw theme_lookup("head_tag") %>
     <%- end %>
 
     <%= render_google_universal_analytics_code %>
