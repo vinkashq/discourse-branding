@@ -64,6 +64,9 @@ export default createWidget('brand-header', {
   defaultState() {
     let states =  {
       hamburgerVisible: false,
+      generalLinks: [],
+      iconLinks: [],
+      loading: true
     };
 
     return states;
@@ -71,10 +74,6 @@ export default createWidget('brand-header', {
 
   toggleHamburger() {
     this.state.hamburgerVisible = !this.state.hamburgerVisible;
-  },
-
-  defaultState() {
-    return { generalLinks: [], iconLinks: [], loading: true};
   },
 
   loadNavigation() {
